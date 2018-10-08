@@ -7,15 +7,29 @@
 //
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let locationManager = CLLocationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        GMSServices.provideAPIKey(Constants.Keys.googleMaps)
+        GMSPlacesClient.provideAPIKey(Constants.Keys.googleMaps)
+        
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let mainVC = MapsVC()
+        mainVC.view.backgroundColor = .white
+        self.window!.rootViewController = mainVC
+        self.window!.makeKeyAndVisible()
+        
         return true
     }
 
