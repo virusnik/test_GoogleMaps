@@ -266,11 +266,6 @@ class MapsVC: UIViewController {
                     if let response = Mapper<PlaceResult>().map(JSONObject: responseValue) {
                         selfNotNil.placeResult = response
                         selfNotNil.tableView.reloadData()
-                        debugPrint("Result request: \(responseValue)")
-                        debugPrint()
-                    }
-                    else {
-                        print("not found")
                     }
                 }
                 break
